@@ -11,7 +11,6 @@ server.listen("5000", () => {
 })
 
 const users = []
-
 const tweets = []
 
 server.post("/sign-up", (request, response) => {
