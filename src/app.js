@@ -33,3 +33,28 @@ server.post("/sign-up", (request, response) => {
     users.push(user)
     response.send("OK")
 })
+
+
+server.post("/tweets", (request, response) => {
+    const {username, tweet} = request.body
+
+    if (!username) {
+	    response.send('Preencha seu nome!');
+        return;
+	} else if (!tweet){
+        response.send('Preencha seu tweet!');
+        return;
+    }
+
+    if(users.find((user) => user.username === username)) {
+        const tweetObj = {
+            username: username,
+            tweet: tweet
+        }
+        
+        tweets.push(tweetObj)
+        response.send("OK")
+    } else {
+        response.send("UNAUTHORIZED")
+    }
+})
