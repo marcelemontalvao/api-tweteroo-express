@@ -34,7 +34,6 @@ server.post("/sign-up", (request, response) => {
     response.send("OK")
 })
 
-
 server.post("/tweets", (request, response) => {
     const {username, tweet} = request.body
 
@@ -58,7 +57,6 @@ server.post("/tweets", (request, response) => {
         response.send("UNAUTHORIZED")
     }
 })
-
 
 server.get("/tweets", (request, response) => {
 
