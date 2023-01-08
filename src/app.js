@@ -58,3 +58,18 @@ server.post("/tweets", (request, response) => {
         response.send("UNAUTHORIZED")
     }
 })
+
+
+server.get("/tweets", (request, response) => {
+
+    tweets.forEach((tweet) => {
+        const { avatar }  = users.find((user) => user.username === tweet.username)
+        tweet.avatar = avatar
+    })
+
+    if(tweets.length <= 10) {
+        return response.send([...tweets].reverse())
+    } else {
+        return response.send([...tweets].reverse().slice(0, 10))
+    }
+})
